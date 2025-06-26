@@ -1,0 +1,337 @@
+DDL Scripts: 
+ 
+-- Category 
+
+INSERT INTO Category VALUES  
+
+('C001', 'Electronics'), 
+
+('C002', 'Clothing'), 
+
+('C003', 'Books'), 
+
+('C004', 'Furniture'), 
+
+('C005', 'Toys'); 
+
+ 
+
+-- Vendor 
+
+INSERT INTO Vendor VALUES  
+
+('V001', 100, 'California', 'Los Angeles', '123 Main St', '90001', '5551230001', 'vendor1@example.com'), 
+
+('V002', 80, 'Texas', 'Houston', '456 Oak St', '77001', '5551230002', 'vendor2@example.com'), 
+
+('V003', 60, 'New York', 'NYC', '789 Pine St', '10001', '5551230003', 'vendor3@example.com'), 
+
+('V004', 120, 'Illinois', 'Chicago', '321 Elm St', '60007', '5551230004', 'vendor4@example.com'), 
+
+('V005', 90, 'Florida', 'Miami', '654 Maple St', '33101', '5551230005', 'vendor5@example.com'); 
+
+ 
+
+-- Discount 
+
+INSERT INTO Discount VALUES  
+
+('D001', '2025-01-01', '2025-01-31', 10.00), 
+
+('D002', '2025-02-01', '2025-02-28', 15.00), 
+
+('D003', '2025-03-01', '2025-03-31', 5.00), 
+
+('D004', '2025-04-01', '2025-04-30', 20.00), 
+
+('D005', '2025-05-01', '2025-05-31', 25.00); 
+
+ 
+
+-- Loyalty 
+
+INSERT INTO Loyalty VALUES  
+
+('L001', 100, 20, '2025-12-31'), 
+
+('L002', 200, 50, '2025-11-30'), 
+
+('L003', 150, 30, '2025-10-31'), 
+
+('L004', 300, 60, '2025-09-30'), 
+
+('L005', 250, 40, '2025-08-31'); 
+
+ 
+
+-- Product 
+
+INSERT INTO Product VALUES  
+
+('P001', 'Laptop', 800.00, 1000.00, 10.00, 50, 'V001'), 
+
+('P002', 'Shirt', 20.00, 30.00, 5.00, 100, 'V002'), 
+
+('P003', 'Book', 10.00, 15.00, 2.00, 70, 'V003'), 
+
+('P004', 'Chair', 25.00, 50.00, 8.00, 60, 'V004'), 
+
+('P005', 'Toy Car', 5.00, 10.00, 1.00, 90, 'V005'); 
+
+ 
+
+-- Product_Category 
+
+INSERT INTO Product_Category VALUES  
+
+('P001', 'C001'), 
+
+('P002', 'C002'), 
+
+('P003', 'C003'), 
+
+('P004', 'C004'), 
+
+('P005', 'C005'); 
+
+ 
+
+-- Wishlist 
+
+INSERT INTO Wishlist VALUES  
+
+('W001', 200.00), 
+
+('W002', 150.00), 
+
+('W003', 80.00), 
+
+('W004', 300.00), 
+
+('W005', 100.00); 
+
+ 
+
+-- Wishlist_Has 
+
+INSERT INTO Wishlist_Has VALUES  
+
+('W001', 'P001'), 
+
+('W002', 'P002'), 
+
+('W003', 'P003'), 
+
+('W004', 'P004'), 
+
+('W005', 'P005'); 
+
+('W001', 'P002');  
+
+('W001', 'P003'); 
+
+('W004', 'P001'); 
+
+('W002', 'P005'); 
+
+('W005', 'P002'); 
+
+('W003', 'P004'); 
+
+ 
+
+ 
+
+-- OrderTable 
+
+INSERT INTO OrderTable VALUES  
+
+('O001', '2025-04-01', 1, 1000.00, 'Shipped', 'D001', 'L001'), 
+
+('O002', '2025-04-02', 2, 60.00, 'Delivered', 'D002', 'L002'), 
+
+('O003', '2025-04-03', 1, 15.00, 'Processing', 'D003', 'L003'), 
+
+('O004', '2025-04-04', 4, 200.00, 'Cancelled', 'D004', 'L004'), 
+
+('O005', '2025-04-05', 3, 30.00, 'Returned', 'D005', 'L005'); 
+
+ 
+
+-- Tracking 
+
+INSERT INTO Tracking VALUES  
+
+('T001', 'FedEx', 'O001'), 
+
+('T002', 'UPS', 'O002'), 
+
+('T003', 'DHL', 'O003'), 
+
+('T004', 'USPS', 'O004'), 
+
+('T005', 'BlueDart', 'O005'); 
+
+ 
+
+-- Cart 
+
+INSERT INTO Cart VALUES  
+
+('C001', 2, 60.00, 'O001'), 
+
+('C002', 1, 30.00, 'O002'), 
+
+('C003', 3, 45.00, 'O003'), 
+
+('C004', 4, 100.00, 'O004'), 
+
+('C005', 2, 20.00, 'O005'); 
+
+ 
+
+-- In_Cart 
+
+INSERT INTO In_Cart VALUES  
+
+('C001', 'P002'), 
+
+('C002', 'P003'), 
+
+('C003', 'P004'), 
+
+('C004', 'P005'), 
+
+('C005', 'P001'); 
+
+ 
+
+-- Payment_Details 
+
+INSERT INTO Payment_Details VALUES  
+
+('PM001', '2025-04-01', 'Completed', 1000.00, 'Credit Card', 'O001'), 
+
+('PM002', '2025-04-02', 'Completed', 60.00, 'PayPal', 'O002'), 
+
+('PM003', '2025-04-03', 'Pending', 15.00, 'Debit Card', 'O003'), 
+
+('PM004', '2025-04-04', 'Failed', 200.00, 'Net Banking', 'O004'), 
+
+('PM005', '2025-04-05', 'Refunded', 30.00, 'Wallet', 'O005'); 
+
+ 
+
+-- Rating 
+
+INSERT INTO Rating VALUES  
+
+('R001', 5, 'P001'), 
+
+('R002', 4, 'P002'), 
+
+('R003', 3, 'P003'), 
+
+('R004', 2, 'P004'), 
+
+('R005', 1, 'P005'), 
+
+('R006', 4.6, 'P001'), 
+
+('R007', 4.5, 'P002'), 
+
+('R008', 4.1, 'P003'), 
+
+('R009', 3.5, 'P004'), 
+
+('R010', 3.2, 'P005'), 
+
+('R011', 4.2, 'P001'), 
+
+('R012', 3.8, 'P002'), 
+
+('R013', 4.5, 'P003'), 
+
+('R014', 3.2, 'P004'), 
+
+('R015', 3.7, 'P005'); 
+
+ 
+
+-- Department 
+
+INSERT INTO Department VALUES  
+
+('D001', 'New York', 'Support'), 
+
+('D002', 'Chicago', 'Sales'), 
+
+('D003', 'Los Angeles', 'Tech'), 
+
+('D004', 'Houston', 'HR'), 
+
+('D005', 'San Diego', 'Logistics'); 
+
+ 
+
+-- Employee 
+
+INSERT INTO Employee VALUES  
+
+('E001', 'John Smith', '10001', '1st Ave', 'New York', '5551234560', 'john.smith@example.com', 'D001'), 
+
+('E002', 'Jane Doe', '10002', '2nd Ave', 'Chicago', '5551234561', 'jane.doe@example.com', 'D002'), 
+
+('E003', 'Bob Lee', '10003', '3rd Ave', 'Los Angeles', '5551234562', 'bob.lee@example.com', 'D003'), 
+
+('E004', 'Alice Kim', '10004', '4th Ave', 'Houston', '5551234563', 'alice.kim@example.com', 'D004'), 
+
+('E005', 'Tom Ray', '10005', '5th Ave', 'San Diego', '5551234564', 'tom.ray@example.com', 'D005'); 
+
+ 
+
+-- Issue (references Employee) 
+
+INSERT INTO Issue VALUES  
+
+('IS001', '2025-04-01', '2025-04-05', 'O001', 'E001'), 
+
+('IS002', '2025-04-02', '2025-04-06', 'O002', 'E002'), 
+
+('IS003', '2025-04-03', '2025-04-07', 'O003', 'E003'), 
+
+('IS004', '2025-04-04', '2025-04-08', 'O004', 'E004'), 
+
+('IS005', '2025-04-05', '2025-04-09', 'O005', 'E005'); 
+
+ 
+
+-- Customer 
+
+INSERT INTO Customer VALUES  
+
+('U001', '5551110001', 'Alice', 'Walker', 'alice.w@example.com', 'California', 'Los Angeles', '123 Sunset Blvd', '90001', 'W001', 'C001'), 
+
+('U002', '5551110002', 'Mark', 'Brown', 'mark.b@example.com', 'Texas', 'Houston', '456 Sunshine St', '77001', 'W002', 'C002'), 
+
+('U003', '5551110003', 'Sophie', 'Lee', 'sophie.l@example.com', 'New York', 'NYC', '789 Star St', '10001', 'W003', 'C003'), 
+
+('U004', '5551110004', 'Chris', 'Nash', 'chris.n@example.com', 'Illinois', 'Chicago', '321 Moon Ave', '60007', 'W004', 'C004'), 
+
+('U005', '5551110005', 'Diana', 'King', 'diana.k@example.com', 'Florida', 'Miami', '654 Cloud Dr', '33101', 'W005', 'C005'); 
+
+ 
+
+-- Customer_Rating 
+
+INSERT INTO Customer_Rating VALUES  
+
+('U001', 'R001'), 
+
+('U002', 'R002'), 
+
+('U003', 'R003'), 
+
+('U004', 'R004'), 
+
+('U005', 'R005'); 

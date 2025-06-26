@@ -1,0 +1,146 @@
+DDL Scripts
+CREATE TABLE Customer (
+user_id VARCHAR(5) PRIMARY KEY,
+contact_no VARCHAR(15),
+fname VARCHAR(50),
+lname VARCHAR(50),
+email VARCHAR(100),
+state VARCHAR(50),
+city VARCHAR(50),
+street VARCHAR(100),
+pin_code VARCHAR(10),
+w_id VARCHAR(5),
+cart_id VARCHAR(5),
+FOREIGN KEY (w_id) REFERENCES Wishlist(w_id),
+FOREIGN KEY (cart_id) REFERENCES Cart(cart_id)
+);
+CREATE TABLE Employee (
+e_id VARCHAR(5) PRIMARY KEY,
+name VARCHAR(50),
+pin_code VARCHAR(10),
+street VARCHAR(100),
+city VARCHAR(50),
+ph_no VARCHAR(15),
+email VARCHAR(100),
+d_id VARCHAR(5),
+issue_id VARCHAR(5),
+FOREIGN KEY (d_id) REFERENCES Department(did),
+FOREIGN KEY (issue_id) REFERENCES Issue(issue_id)
+);
+CREATE TABLE Department (
+did VARCHAR(5) PRIMARY KEY,
+city VARCHAR(50),
+dname VARCHAR(50)
+);
+CREATE TABLE Issue (
+issue_id VARCHAR(5) PRIMARY KEY,
+start_date DATE,
+end_date DATE,
+oid VARCHAR(5),
+FOREIGN KEY (oid) REFERENCES OrderTable(oid)
+);
+CREATE TABLE OrderTable (
+oid VARCHAR(5) PRIMARY KEY,
+date DATE,
+quantity INT,
+price DECIMAL(10,2),
+status VARCHAR(20),
+d_code VARCHAR(5),
+tid VARCHAR(5),
+lpid VARCHAR(5),
+FOREIGN KEY (d_code) REFERENCES Discount(d_code),
+FOREIGN KEY (tid) REFERENCES Tracking(tid),
+FOREIGN KEY (lpid) REFERENCES Loyalty(lpid)
+);
+CREATE TABLE Customer_Rating (
+user_id VARCHAR(5) PRIMARY KEY,
+rating_id VARCHAR(5),
+FOREIGN KEY (user_id) REFERENCES Customer(user_id),
+FOREIGN KEY (rating_id) REFERENCES Rating(rating_id)
+);
+CREATE TABLE Rating (
+rating_id VARCHAR(5) PRIMARY KEY,
+value INT CHECK (value >= 1 AND value <= 5),
+pid VARCHAR(5),
+FOREIGN KEY (pid) REFERENCES Product(pid)
+);
+CREATE TABLE Wishlist (
+w_id VARCHAR(5) PRIMARY KEY,
+price DECIMAL(10,2)
+);
+CREATE TABLE Wishlist_Has (
+wid VARCHAR(5),
+pid VARCHAR(5),
+PRIMARY KEY (wid, pid),
+FOREIGN KEY (wid) REFERENCES Wishlist(w_id),
+FOREIGN KEY (pid) REFERENCES Product(pid)
+);
+CREATE TABLE Cart (
+cart_id VARCHAR(5) PRIMARY KEY,
+quantity INT,
+final_price DECIMAL(10,2),
+oid VARCHAR(5),
+FOREIGN KEY (oid) REFERENCES OrderTable(oid)
+);
+CREATE TABLE In_Cart (
+cart_id VARCHAR(5),
+pid VARCHAR(5),
+PRIMARY KEY (cart_id, pid),
+FOREIGN KEY (cart_id) REFERENCES Cart(cart_id),
+FOREIGN KEY (pid) REFERENCES Product(pid)
+);
+CREATE TABLE Product_Category (
+pid VARCHAR(5) PRIMARY KEY,
+c_id VARCHAR(5),
+FOREIGN KEY (pid) REFERENCES Product(pid),
+FOREIGN KEY (c_id) REFERENCES Category(c_id)
+);
+CREATE TABLE Product (
+pid VARCHAR(5) PRIMARY KEY,
+pname VARCHAR(100),
+purchased_price DECIMAL(10,2),
+selling_price DECIMAL(10,2),
+discount DECIMAL(5,2),
+stock INT,
+v_id VARCHAR(5),
+FOREIGN KEY (v_id) REFERENCES Vendor(v_id)
+);
+CREATE TABLE Payment_Details (
+payment_id VARCHAR(5) PRIMARY KEY,
+date DATE,
+status VARCHAR(20),
+amount DECIMAL(10,2),
+method VARCHAR(20),
+oid VARCHAR(5),
+FOREIGN KEY (oid) REFERENCES OrderTable(oid)
+);
+CREATE TABLE Category (
+c_id VARCHAR(5) PRIMARY KEY,
+c_name VARCHAR(50)
+);
+CREATE TABLE Vendor (
+v_id VARCHAR(5) PRIMARY KEY,
+stock INT,
+state VARCHAR(50),
+city VARCHAR(50),
+street VARCHAR(100),
+pin_code VARCHAR(10),
+ph_no VARCHAR(15),
+email VARCHAR(100)
+);
+CREATE TABLE Discount (
+d_code VARCHAR(5) PRIMARY KEY,
+start_date DATE,
+end_date DATE,
+amount DECIMAL(5,2)
+);
+CREATE TABLE Tracking (
+tid VARCHAR(5) PRIMARY KEY,
+courier_name VARCHAR(50)
+);
+CREATE TABLE Loyalty (
+lpid VARCHAR(5) PRIMARY KEY,
+points_earned INT,
+points_used INT,
+exp_date DATE
+);
